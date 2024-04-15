@@ -22,12 +22,13 @@ type StepBlock = {
 
 export default function Page() {
   const { intro, steps, outro } = getBlocks() as Blocks
+  console.log(intro, steps, outro)
   return (
     <main>
-      <h1>{intro.query}</h1>
-      {intro.children}
+      <h1>{intro?.query}</h1>
+      {intro?.children}
       <Scrollycoding steps={steps} />
-      {outro.children}
+      {outro?.children}
     </main>
   )
 }
@@ -42,7 +43,7 @@ function Scrollycoding({ steps }: { steps: StepBlock[] }) {
     >
       <ScrollableContent steps={steps} />
       <div className="w-[40vw] max-w-xl bg-zinc-900">
-        <div className="top-16 sticky">
+        <div className="top-16 sticky" style={{ height: "90vh", overflow: 'auto' }}>
           <Step element="sticker" />
         </div>
       </div>
